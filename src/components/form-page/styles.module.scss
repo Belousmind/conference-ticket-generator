@@ -1,0 +1,22 @@
+@use '@styles/variables' as *;
+@use '@styles/mixin' as *;
+
+.title {
+  @include text-preset-1;
+
+  color: $neutral-0;
+  text-align: center;
+}
+
+.subtitle {
+  @include text-preset-4;
+
+  color: $neutral-300;
+  text-align: center;
+}
+
+.form-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

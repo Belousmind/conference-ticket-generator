@@ -1,0 +1,65 @@
+@use '@styles/variables' as *;
+@use '@styles/mixin' as *;
+
+.label {
+  display: flex;
+  flex-direction: column;
+
+  gap: $spacing-150;
+  align-items: start;
+
+  color: $neutral-0;
+  @include text-preset-5;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+
+  gap: $spacing-250;
+  justify-content: center;
+
+  width: 100%;
+  height: 54px;
+  padding: 0 $spacing-200;
+  color: $neutral-0;
+  outline: none;
+  background: rgb(255 255 255 / 8%);
+  border: 1px solid $neutral-500;
+  border-radius: $radius-12;
+  backdrop-filter: blur(2.5px);
+  transition: 0.4s ease-out;
+  @include text-preset-6;
+
+  &:hover {
+    background: rgb(255 255 255 / 20%);
+  }
+
+  &.invalid {
+    border: 1px solid $orange-500;
+  }
+
+  &:focus {
+    background: rgb(255 255 255 / 8%);
+    box-shadow:
+      0 0 0 3px $neutral-900,
+      0 0 0 5px $neutral-500;
+  }
+
+  &::placeholder {
+    color: $neutral-300;
+  }
+}
+
+.hint {
+  display: flex;
+  gap: $spacing-100;
+  align-items: center;
+  
+  color: $neutral-300;
+  @include text-preset-7;
+
+  &.invalid {
+    color: $orange-500;
+  }
+}

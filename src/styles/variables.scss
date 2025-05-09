@@ -1,31 +1,27 @@
 // Color Palette
-$neutral-900: #0D082D;
-$neutral-700: #4B4869;
-$neutral-500: #8784A5;
-$neutral-300: #D1D0D5;
-$neutral-0: #FFFFFF;
-
-$orange-700: #E1604F;
-$orange-500: #F57463;
-
-$gradient-01: linear-gradient(90deg, #F37362 0%, #FFF 100%);
+$neutral-900: #0d082d;
+$neutral-700: #4b4869;
+$neutral-500: #8784a5;
+$neutral-300: #d1d0d5;
+$neutral-0: #fff;
+$orange-700: #e1604f;
+$orange-500: #f57463;
+$gradient-01: linear-gradient(90deg, #f37362 0%, #fff 100%);
 
 // Font Settings
-$font-family-primary: 'Inconsolata', sans-serif;
-
+$font-family-primary: 'Inconsolata', monospace;
 $font-size-60: 3.75rem; // 60px — ExtraBold
-$font-size-40: 2.5rem;  // 40px — Bold
+$font-size-40: 2.5rem; // 40px — Bold
 $font-size-30: 1.875rem; // 30px
-$font-size-24: 1.5rem;  // 24px — Bold
+$font-size-24: 1.5rem; // 24px — Bold
 $font-size-22: 1.375rem; // 22px — Bold (mobile)
-$font-size-20: 1.25rem;  // 20px — Medium
+$font-size-20: 1.25rem; // 20px — Medium
 $font-size-18: 1.125rem; // 18px — Medium
 $font-size-14: 0.875rem; // 14px — Regular
-$font-size-12: 0.75rem;  // 12px — Regular (mobile)
+$font-size-12: 0.75rem; // 12px — Regular (mobile)
 
 $line-height-110: 110%;
 $line-height-120: 120%;
-
 $letter-spacing-minus-1: -1px;
 $letter-spacing-minus-0-5: -0.5px;
 $letter-spacing-minus-0-2: -0.2px;

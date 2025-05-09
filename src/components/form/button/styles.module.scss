@@ -1,0 +1,25 @@
+@use '@styles/variables' as *;
+@use '@styles/mixin' as *;
+
+.button {
+  padding: $spacing-200 $spacing-300;
+  color: $neutral-900;
+  cursor: pointer;
+  outline: none;
+  background-color: $orange-500;
+  border: none;
+  border-radius: $radius-12;
+  transition: 0.4s ease-out;
+  @include text-preset-5-extra;
+
+  &:focus {
+    box-shadow:
+      0 0 0 3px $neutral-900,
+      0 0 0 4px $neutral-0;
+  }
+
+  &:hover {
+    background-color: $orange-700;
+    box-shadow: 0 4px 0 0 $orange-500;
+  }
+}

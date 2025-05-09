@@ -1,0 +1,25 @@
+@use '@styles/variables.scss' as *;
+@import 'https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap';
+
+:root {
+  font-family: $font-family-primary;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgb(255 255 255 / 87%);
+  background-color: $neutral-900;
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
