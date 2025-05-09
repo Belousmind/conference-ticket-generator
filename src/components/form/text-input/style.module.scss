@@ -2,14 +2,7 @@
 @use '@styles/mixin' as *;
 
 .label {
-  display: flex;
-  flex-direction: column;
-
-  gap: $spacing-150;
-  align-items: start;
-
-  color: $neutral-0;
-  @include text-preset-5;
+  @include label;
 }
 
 .input {
@@ -20,7 +13,9 @@
   justify-content: center;
 
   width: 100%;
+  
   height: 54px;
+
   padding: 0 $spacing-200;
   color: $neutral-0;
   outline: none;
@@ -55,7 +50,7 @@
   display: flex;
   gap: $spacing-100;
   align-items: center;
-  
+
   color: $neutral-300;
   @include text-preset-7;
 
