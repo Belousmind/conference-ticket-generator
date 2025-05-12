@@ -16,7 +16,7 @@
 }
 
 .form-page {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  gap: $spacing-250;
+  margin: $spacing-200;
+  @include flex-column;
 }

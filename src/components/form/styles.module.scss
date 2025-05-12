@@ -1,0 +1,7 @@
+@use '@styles/variables' as *;
+@use '@styles/mixin' as *;
+
+.form {
+  gap: $spacing-300;
+  @include flex-column;
+}

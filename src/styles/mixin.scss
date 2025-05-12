@@ -111,20 +111,22 @@
 
 @mixin flex-center {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 @mixin flex-center-column {
-   @include flex-center;
-   flex-direction: column;
+  @include flex-center;
+
+  flex-direction: column;
 }
 
 @mixin label {
   @include flex-column;
+
   gap: $spacing-150;
   align-items: start;
-  cursor: pointer;
   color: $neutral-0;
+  cursor: pointer;
   @include text-preset-5;
 }

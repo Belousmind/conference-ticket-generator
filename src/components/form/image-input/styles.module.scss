@@ -7,30 +7,35 @@
 
 .field {
   position: relative;
-
-  @include flex-center-column;
- 
   gap: $spacing-200;
   width: 100%;
-  // height: 126px;
-
   padding: $spacing-150 $spacing-200;
-
-  border-radius: $radius-12;
-  border: 1px dashed $neutral-500;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(2.5px);
   outline: none;
+  background: rgb(255 255 255 / 8%);
+  border: 1px dashed $neutral-500;
+  border-radius: $radius-12;
+  backdrop-filter: blur(2.5px);
+
+  @include flex-center-column;
+
+  &:hover {
+    background: rgb(255 255 255 / 20%);
+  }
+
   &:focus-within {
     box-shadow:
-      0px 0px 0px 3px $neutral-900,
-      0px 0px 0px 5px $neutral-500;
+      0 0 0 3px $neutral-900,
+      0 0 0 5px $neutral-500;
+  }
+
+  input {
+    cursor: pointer;
   }
 }
 
 .file-input {
-  opacity: 0;
   position: absolute;
+  opacity: 0;
 }
 
 .upload-icon-container {
@@ -38,10 +43,63 @@
 
   width: 50px;
   height: 50px;
-
-  border-radius: $radius-12;
+  margin-top: $spacing-050;
+  overflow: hidden;
+  background: rgb(255 255 255 / 10%);
   border: 1px solid $neutral-700;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0px 2px 4px -2px $neutral-900;
+  border-radius: $radius-12;
+  box-shadow: 0 2px 4px -2px $neutral-900;
   backdrop-filter: blur(12px);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.hint {
+  display: flex;
+  gap: $spacing-100;
+  align-items: center;
+  color: $neutral-300;
+  @include text-preset-7;
+
+  &.invalid {
+    color: $orange-500;
+  }
+}
+
+.image-controls {
+  padding: $spacing-050 $spacing-100;
+  color: $neutral-300;
+  cursor: pointer;
+  outline: none;
+  background: rgb(255 255 255 / 10%);
+  border: none;
+  border-radius: $radius-4;
+  transition: 0.4s ease-out;
+  @include text-preset-7;
+  @include flex-center;
+
+  &:first-child {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    border: 1px solid $neutral-700;
+  }
+
+  &:hover {
+    color: $neutral-0;
+    background: rgb(255 255 255 / 20%);
+  }
+}
+
+.instruction-text {
+  gap: $spacing-100;
+  margin-bottom: $spacing-050;
+  color: $neutral-300;
+  @include text-preset-6;
+  @include flex-center;
 }

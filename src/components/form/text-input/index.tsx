@@ -1,36 +1,39 @@
 import styles from './style.module.scss';
 import HintIcon from '@components/svg/hint-icon';
+import type { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 
 type TextInputProps = {
-  text: string;
+  label: string;
   placeholder?: string;
   id: string;
-  name: string;
   type: string;
-  hint: string;
+  error?: FieldError;
+  register: UseFormRegisterReturn;
 };
 
 export default function TextInput({
-  text,
+  label,
   placeholder = '',
   id,
-  name,
   type,
-  hint,
+  error,
+  register,
 }: TextInputProps) {
   return (
     <label htmlFor={id} className={styles.label}>
-      {text}
+      {label}
       <input
         type={type}
-        name={name}
         id={id}
         placeholder={placeholder}
         className={styles.input}
+        {...register}
       />
-      <span className={styles.hint}>
-        <HintIcon /> {hint}
-      </span>
+      {error && (
+        <span className={styles.hint}>
+          <HintIcon /> {error.message}
+        </span>
+      )}
     </label>
   );
 }

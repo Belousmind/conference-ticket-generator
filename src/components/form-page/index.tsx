@@ -1,7 +1,5 @@
 import styles from './styles.module.scss';
-import Button from '@components/form/button';
-import TextInput from '@components/form/text-input';
-import ImageInput from '@components/form/image-input';
+import TicketForm from '@components/form';
 
 export default function FormPage() {
   return (
@@ -12,9 +10,7 @@ export default function FormPage() {
       <h2 className={styles.subtitle}>
         Secure your spot at next year’s biggest coding conference.
       </h2>
-      <ImageInput />
-      <TextInput text="Your email" />
-      <Button text="Generate My Ticket" />
+      <TicketForm />
     </section>
   );
 }
