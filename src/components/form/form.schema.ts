@@ -1,28 +1,21 @@
 import { z } from 'zod';
-import { validateFile } from './validate-file';
 
 const githubUsernameRegex = /^@(?!-)(?!.*--)[a-zA-Z0-9-]{3,39}(?<!-)$/;
 
+const maxFileSize = 500 * 1024;
+
 const schema = z.object({
   image: z
-    .custom<FileList>(
-      (fileList) => fileList instanceof FileList && fileList.length > 0,
-      {
-        message: 'Upload your photo (JPG or PNG, max size: 500KB).',
-      }
-    )
-    .refine((fileList) => fileList[0].size <= 500 * 1024, {
-      message: 'File too large. Please upload a photo under 500KB.',
+    .instanceof(FileList)
+    .refine((list) => list.length > 0, {
+      message: 'Upload your photo (JPG or PNG, max size: 500KB).',
+    })
+    .refine((list) => ['image/jpeg', 'image/png'].includes(list[0]?.type), {
+      message: 'Only JPG or PNG images are allowed.',
+    })
+    .refine((list) => list[0]?.size <= maxFileSize, {
+      message: 'Image must be smaller than 500KB.',
     }),
-  // .refine((fileList) => {
-  //   const result = validateFile(fileList[0]);
-  //   if (!result.isValid) throw new Error(result.error);
-  //   return true;
-  // }),
-  // .transform((fileList) => ({
-  //   file: fileList[0],
-  //   url: URL.createObjectURL(fileList[0]),
-  // })),
   name: z
     .string()
     .min(3, 'Name must be at least 3 characters')

@@ -8,9 +8,16 @@ import clsx from 'clsx';
 type ImageInputProps = {
   register: UseFormRegisterReturn;
   error?: FieldError;
+  inputKey: number;
+  onReset: () => void;
 };
 
-export default function ImageInput({ register, error }: ImageInputProps) {
+export default function ImageInput({
+  register,
+  error,
+  inputKey,
+  onReset,
+}: ImageInputProps) {
   const [previewImg, setPreviewImg] = useState<string | null>(null);
   // const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -19,6 +26,7 @@ export default function ImageInput({ register, error }: ImageInputProps) {
   function handleDelete(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     setPreviewImg(null);
+    onReset();
   }
 
   // function handleChange() {
@@ -27,7 +35,8 @@ export default function ImageInput({ register, error }: ImageInputProps) {
 
   function handleFileLoad(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
-    e.target.value = '';
+    console.log(e.target.files);
+    // e.target.value = '';
 
     if (file && file.size <= 500 * 1024) {
       setPreviewImg(URL.createObjectURL(file));
@@ -59,6 +68,7 @@ export default function ImageInput({ register, error }: ImageInputProps) {
 
         <input
           type="file"
+          key={inputKey}
           accept=".jpg, .jpeg, .png, image/jpeg, image/png"
           id="image"
           // ref={fileInputRef}

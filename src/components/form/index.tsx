@@ -6,10 +6,13 @@ import schema from './form.schema';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import ImageInput from './image-input';
+import { useState } from 'react';
 
 type FormProps = z.infer<typeof schema>;
 
 export default function TicketForm() {
+  const [inputKey, setInputKey] = useState(0);
+
   const {
     register,
     handleSubmit,
@@ -18,13 +21,19 @@ export default function TicketForm() {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = (data: FormProps) => {
+  const onSubmit = async (data: FormProps) => {
     console.log('Valid data:', data);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   };
 
   return (
     <form action="" className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <ImageInput register={register('image')} error={errors.image} />
+      <ImageInput
+        register={register('image')}
+        error={errors.image}
+        inputKey={inputKey}
+        onReset={() => setInputKey((k) => k + 1)}
+      />
       <TextInput
         label="Full Name"
         placeholder=""
