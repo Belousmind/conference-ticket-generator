@@ -1,0 +1,173 @@
+@use '@styles/variables' as *;
+@use '@styles/mixin' as *;
+
+.ticket-section {
+  @include flex-center-column;
+
+  position: relative;
+  gap: $spacing-300;
+  margin: 0 $spacing-200;
+}
+
+.ticket {
+  position: relative;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 343 / 161;
+  padding: $spacing-150;
+  color: $neutral-300;
+  @include flex-column;
+  @media (width >= 480px) {
+    padding: $spacing-300;
+  }
+
+  & > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.confirmation {
+  @include flex-column;
+
+  gap: $spacing-250;
+  align-items: center;
+  text-align: center;
+
+  @media (width >= 480px) {
+    gap: $spacing-400;
+  }
+}
+
+.title {
+  @include text-preset-3;
+
+  margin: 0;
+  color: $neutral-0;
+
+  @media (width >= 720px) {
+    @include text-preset-1;
+  }
+
+  .name {
+    background: linear-gradient(90deg, $orange-500 0%, $neutral-0 100%);
+    background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.text {
+  max-width: 514px;
+  margin: 0;
+
+  @include text-preset-4-mobile;
+
+  .email {
+    color: $orange-500;
+  }
+
+  @media (width >= 480px) {
+    @include text-preset-4;
+  }
+}
+
+.ticket-info {
+  display: flex;
+  gap: $spacing-150;
+  @media (width >= 480px) {
+    gap: $spacing-250;
+  }
+
+  & > svg {
+    margin-top: $spacing-150;
+  }
+}
+
+.event-summary {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  gap: $spacing-100;
+
+  @media (width >= 480px) {
+    gap: $spacing-150;
+  }
+}
+
+.event {
+  grid-column: span 3;
+  color: $neutral-0;
+  @include text-preset-4;
+  @media (width >= 480px) {
+    @include text-preset-2;
+  }
+}
+
+.event-info {
+  grid-row: 2;
+  @include text-preset-6-mobile;
+  @media (width >= 480px) {
+    @include text-preset-3-mobile;
+  }
+}
+
+.ticket-number {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  color: $neutral-500;
+  transform: translateY(-50%) rotate(90deg);
+  @include text-preset-3-mobile;
+  @media (width >= 480px) {
+    @include text-preset-3;
+  }
+}
+
+.attendee {
+  display: flex;
+  gap: $spacing-150;
+  align-items: center;
+
+  img {
+    width: 45px;
+    height: 45px;
+    border-radius: $radius-6;
+  }
+
+  @media (width >= 480px) {
+    gap: $spacing-200;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+.user-info {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  gap: $spacing-050;
+  align-items: center;
+}
+
+.fullname {
+  grid-column: span 2;
+  @include text-preset-4-mobile;
+
+  color: $neutral-0;
+  @media (width >= 480px) {
+    @include text-preset-3;
+  }
+}
+
+.github {
+  @include text-preset-6-mobile;
+  @media (width >= 480px) {
+    @include text-preset-5;
+  }
+}

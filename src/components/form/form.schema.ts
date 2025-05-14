@@ -13,12 +13,12 @@ const schema = z.object({
     )
     .refine((fileList) => fileList[0].size <= 500 * 1024, {
       message: 'File too large. Please upload a photo under 500KB.',
-    })
-    .refine((fileList) => {
-      const result = validateFile(fileList[0]);
-      if (!result.isValid) throw new Error(result.error);
-      return true;
     }),
+  // .refine((fileList) => {
+  //   const result = validateFile(fileList[0]);
+  //   if (!result.isValid) throw new Error(result.error);
+  //   return true;
+  // }),
   // .transform((fileList) => ({
   //   file: fileList[0],
   //   url: URL.createObjectURL(fileList[0]),
