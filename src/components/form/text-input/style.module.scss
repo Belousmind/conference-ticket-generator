@@ -45,13 +45,8 @@
 }
 
 .hint {
-  display: flex;
-  gap: $spacing-100;
-  align-items: center;
-  @include text-preset-7;
-
+  @include hint;
   color: $orange-500;
-
   &.invalid {
     color: $orange-500;
   }

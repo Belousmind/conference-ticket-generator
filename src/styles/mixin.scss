@@ -123,3 +123,10 @@
   border-radius: $radius-12;
   backdrop-filter: blur(2.5px);
 }
+
+@mixin hint {
+  display: flex;
+  gap: $spacing-100;
+  align-items: center;
+  @include text-preset-7;
+}
