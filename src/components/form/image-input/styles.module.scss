@@ -8,15 +8,10 @@
 .field {
   position: relative;
   gap: $spacing-200;
-  width: 100%;
   padding: $spacing-150 $spacing-200;
-  outline: none;
-  background: rgb(255 255 255 / 8%);
-  border: 1px dashed $neutral-500;
-  border-radius: $radius-12;
-  backdrop-filter: blur(2.5px);
 
   @include flex-center-column;
+  @include input-base-style;
 
   &:hover {
     background: rgb(255 255 255 / 20%);
@@ -62,8 +57,9 @@
   display: flex;
   gap: $spacing-100;
   align-items: center;
-  color: $neutral-300;
   @include text-preset-7;
+
+  color: $neutral-300;
 
   &.invalid {
     color: $orange-500;

@@ -114,3 +114,12 @@
   @include text-preset-5;
   @include flex-column;
 }
+
+@mixin input-base-style {
+  width: 100%;
+  outline: none;
+  background: rgb(255 255 255 / 8%);
+  border: 1px solid $neutral-500;
+  border-radius: $radius-12;
+  backdrop-filter: blur(2.5px);
+}
