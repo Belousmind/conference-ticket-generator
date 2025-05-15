@@ -10,6 +10,7 @@ type TicketProps = {
 };
 
 export default function Ticket({ name, email, github, imgSrc }: TicketProps) {
+ 
   return (
     <section className={styles['ticket-section']}>
       <div className={styles.confirmation}>

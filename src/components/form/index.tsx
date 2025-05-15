@@ -7,11 +7,13 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import ImageInput from './image-input';
 import { useState } from 'react';
+import { useTicketStore } from '../../store/ticket-store';
 
 type FormProps = z.infer<typeof schema>;
 
 export default function TicketForm() {
   const [inputKey, setInputKey] = useState(0);
+  const setTicket = useTicketStore((state) => state.setTicket);
 
   const {
     register,
@@ -22,8 +24,16 @@ export default function TicketForm() {
   });
 
   const onSubmit = async (data: FormProps) => {
-    console.log('Valid data:', data);
     await new Promise((resolve) => setTimeout(resolve, 1000));
+    const file = data.image[0];
+    const imageUrl = URL.createObjectURL(file);
+
+    setTicket({
+      name: data.name,
+      email: data.email,
+      github: data.github,
+      imageUrl,
+    });
   };
 
   return (
