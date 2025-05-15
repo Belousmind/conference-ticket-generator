@@ -1,0 +1,15 @@
+@use '@styles/variables' as *;
+@use '@styles/mixin' as *;
+
+.header {
+  gap: clamp(12.8px, 2vw, $spacing-200);
+  @include flex-center;
+}
+
+.text {
+  font-family: $font-family-secondary;
+  font-size: clamp($font-size-20, 2.5vw, $font-size-24);
+  font-weight: 700;
+  color: $neutral-0;
+  text-transform: capitalize;
+}
