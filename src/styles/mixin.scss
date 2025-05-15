@@ -1,107 +1,93 @@
 @use './variables' as *;
 
-@mixin text-preset-1 {
+@mixin font-height-110 {
   font-family: $font-family-primary;
-  font-size: $font-size-60;
-  font-weight: 800;
   line-height: $line-height-110;
-  letter-spacing: $letter-spacing-minus-1;
 }
 
-@mixin text-preset-1-mobile {
+@mixin font-height-120 {
   font-family: $font-family-primary;
-  font-size: $font-size-60;
-  font-weight: 800;
-  line-height: $line-height-110;
+  line-height: $line-height-120;
+}
+
+@mixin font-height-110-spacing-1 {
   letter-spacing: $letter-spacing-minus-1;
+  @include font-height-110;
+}
+
+@mixin text-preset-1 {
+  font-size: clamp($font-size-30, 7.8vw, $font-size-60);
+  font-weight: 800;
+  color: $neutral-0;
+  text-align: center;
+  @include font-height-110-spacing-1;
 }
 
 @mixin text-preset-2 {
-  font-family: $font-family-primary;
-  font-size: $font-size-40;
+  font-size: clamp($font-size-24, 5.21vw, $font-size-40);
   font-weight: 700;
-  line-height: $line-height-110;
-  letter-spacing: $letter-spacing-minus-1;
-}
-
-@mixin text-preset-2-mobile {
-  font-family: $font-family-primary;
-  font-size: $font-size-24;
-  font-weight: 700;
-  line-height: $line-height-110;
-  letter-spacing: $letter-spacing-minus-1;
+  color: $neutral-0;
+  @include font-height-110-spacing-1;
 }
 
 @mixin text-preset-3 {
-  font-family: $font-family-primary;
-  font-size: $font-size-30;
-  font-weight: 700;
-  line-height: $line-height-110;
-  letter-spacing: $letter-spacing-minus-1;
+  font-size: clamp($font-size-20, 3.91vw, $font-size-30);
+  font-weight: 500;
+  @include font-height-110-spacing-1;
 }
 
-@mixin text-preset-3-mobile {
-  font-family: $font-family-primary;
-  font-size: $font-size-22;
-  font-weight: 700;
-  line-height: $line-height-110;
-  letter-spacing: $letter-spacing-minus-1;
+@mixin text-preset-3-number {
+  font-size: clamp($font-size-20, 3.91vw, $font-size-30);
+  font-weight: 500;
+  @include font-height-110-spacing-1;
 }
 
 @mixin text-preset-4 {
-  font-family: $font-family-primary;
-  font-size: $font-size-24;
-  font-weight: 500;
-  line-height: $line-height-120;
+  font-size: clamp($font-size-20, 3.13vw, $font-size-24);
+  color: $neutral-300;
+  text-align: center;
   letter-spacing: $letter-spacing-minus-0-5;
-}
-
-@mixin text-preset-4-mobile {
-  font-family: $font-family-primary;
-  font-size: $font-size-20;
-  font-weight: 500;
-  line-height: $line-height-120;
-  letter-spacing: $letter-spacing-minus-0-5;
+  @include font-height-120;
 }
 
 @mixin text-preset-5-extra {
-  font-family: $font-family-primary;
   font-size: $font-size-20;
   font-weight: 800;
-  line-height: $line-height-110;
   letter-spacing: $letter-spacing-minus-0-3;
+  @include font-height-110;
 }
 
 @mixin text-preset-5 {
-  font-family: $font-family-primary;
   font-size: $font-size-20;
   font-weight: 500;
-  line-height: $line-height-110;
   letter-spacing: $letter-spacing-minus-0-5;
+  @include font-height-110;
+}
+
+@mixin text-preset-5-adaptive {
+  font-size: clamp($font-size-14, 2.34vw, $font-size-20);
+  font-weight: 500;
+  letter-spacing: $letter-spacing-minus-0-5;
+  @include font-height-110;
 }
 
 @mixin text-preset-6 {
-  font-family: $font-family-primary;
   font-size: $font-size-18;
-  font-weight: 500;
-  line-height: $line-height-120;
-  letter-spacing: $letter-spacing-0;
+  font-weight: 400;
+  @include font-height-120;
 }
 
-@mixin text-preset-6-mobile {
-  font-family: $font-family-primary;
-  font-size: $font-size-14;
-  font-weight: 500;
-  line-height: $line-height-120;
-  letter-spacing: $letter-spacing-0;
+@mixin text-preset-6-adaptive {
+  font-size: clamp($font-size-14, 2.34vw, $font-size-18);
+  font-weight: 400;
+  @include font-height-120;
 }
 
 @mixin text-preset-7 {
-  font-family: $font-family-primary;
   font-size: $font-size-12;
   font-weight: 400;
-  line-height: $line-height-120;
   letter-spacing: $letter-spacing-minus-0-2;
+  @include font-height-120;
 }
 
 @mixin flex-column {
@@ -116,17 +102,15 @@
 }
 
 @mixin flex-center-column {
-  @include flex-center;
-
   flex-direction: column;
+  @include flex-center;
 }
 
 @mixin label {
-  @include flex-column;
-
   gap: $spacing-150;
   align-items: start;
   color: $neutral-0;
   cursor: pointer;
   @include text-preset-5;
+  @include flex-column;
 }

@@ -44,14 +44,9 @@
 }
 
 .title {
-  @include text-preset-3;
+  @include text-preset-1;
 
   margin: 0;
-  color: $neutral-0;
-
-  @media (width >= 720px) {
-    @include text-preset-1;
-  }
 
   .name {
     background: linear-gradient(90deg, $orange-500 0%, $neutral-0 100%);
@@ -63,15 +58,10 @@
 .text {
   max-width: 514px;
   margin: 0;
-
-  @include text-preset-4-mobile;
+  @include text-preset-4;
 
   .email {
     color: $orange-500;
-  }
-
-  @media (width >= 480px) {
-    @include text-preset-4;
   }
 }
 
@@ -99,19 +89,12 @@
 
 .event {
   grid-column: span 3;
-  color: $neutral-0;
-  @include text-preset-4;
-  @media (width >= 480px) {
-    @include text-preset-2;
-  }
+  @include text-preset-2;
 }
 
 .event-info {
   grid-row: 2;
-  @include text-preset-6-mobile;
-  @media (width >= 480px) {
-    @include text-preset-3-mobile;
-  }
+  @include text-preset-6-adaptive;
 }
 
 .ticket-number {
@@ -120,10 +103,7 @@
   right: 0;
   color: $neutral-500;
   transform: translateY(-50%) rotate(90deg);
-  @include text-preset-3-mobile;
-  @media (width >= 480px) {
-    @include text-preset-3;
-  }
+  @include text-preset-3-number;
 }
 
 .attendee {
@@ -156,17 +136,10 @@
 
 .fullname {
   grid-column: span 2;
-  @include text-preset-4-mobile;
-
   color: $neutral-0;
-  @media (width >= 480px) {
-    @include text-preset-3;
-  }
+  @include text-preset-3;
 }
 
 .github {
-  @include text-preset-6-mobile;
-  @media (width >= 480px) {
-    @include text-preset-5;
-  }
+  @include text-preset-5-adaptive;
 }

@@ -3,16 +3,10 @@
 
 .title {
   @include text-preset-1;
-
-  color: $neutral-0;
-  text-align: center;
 }
 
 .subtitle {
   @include text-preset-4;
-
-  color: $neutral-300;
-  text-align: center;
 }
 
 .form-page {
