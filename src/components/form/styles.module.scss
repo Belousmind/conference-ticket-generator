@@ -4,4 +4,11 @@
 .form {
   gap: $spacing-300;
   @include flex-column;
+
+  align-self: center;
+  width: 100%;
+  max-width: 522px;
+  @media (width >= 900px) {
+    max-width: 460px;
+  }
 }

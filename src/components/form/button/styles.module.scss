@@ -18,8 +18,10 @@
       0 0 0 4px $neutral-0;
   }
 
-  &:hover {
-    background-color: $orange-700;
-    box-shadow: 0 4px 0 0 $orange-500;
+  @media (hover: hover) {
+    &:hover {
+      background-color: $orange-700;
+      box-shadow: 0 4px 0 0 $orange-500;
+    }
   }
 }

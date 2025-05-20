@@ -22,9 +22,11 @@
       0 0 0 3px $neutral-900,
       0 0 0 5px $neutral-500;
   }
-
-  &:hover {
-    background: rgb(255 255 255 / 20%);
+  
+  @media (hover: hover) {
+    &:hover {
+      background: rgb(255 255 255 / 20%);
+    }
   }
 
   &::placeholder {
@@ -46,7 +48,9 @@
 
 .hint {
   @include hint;
+
   color: $orange-500;
+
   &.invalid {
     color: $orange-500;
   }

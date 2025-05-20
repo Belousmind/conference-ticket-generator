@@ -1,7 +1,14 @@
 @use '@styles/variables' as *;
 @use '@styles/mixin' as *;
 
+.text {
+  @include flex-center-column;
+
+  gap: $spacing-250;
+}
+
 .title {
+  max-width: 814px;
   @include text-preset-1;
 }
 
@@ -10,7 +17,7 @@
 }
 
 .form-page {
-  gap: $spacing-250;
-  margin: $spacing-200;
+  gap: clamp($spacing-500, 5.86vw, 45px);
+  margin: 0 $spacing-200;
   @include flex-column;
 }

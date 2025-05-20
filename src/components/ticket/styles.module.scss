@@ -2,11 +2,10 @@
 @use '@styles/mixin' as *;
 
 .ticket-section {
-  @include flex-center-column;
-
   position: relative;
-  gap: $spacing-300;
+  gap: clamp(72px, 7.71vw, 111px);
   margin: 0 $spacing-200;
+  @include flex-center-column;
 }
 
 .ticket {
@@ -15,12 +14,9 @@
   width: 100%;
   max-width: 600px;
   aspect-ratio: 343 / 161;
-  padding: $spacing-150;
+  padding: clamp($spacing-150, 5vw, $spacing-300);
   color: $neutral-300;
   @include flex-column;
-  @media (width >= 480px) {
-    padding: $spacing-300;
-  }
 
   & > img {
     position: absolute;
@@ -32,21 +28,16 @@
 }
 
 .confirmation {
-  @include flex-column;
-
-  gap: $spacing-250;
+  gap: clamp($spacing-250, 3.13vw, $spacing-400);
   align-items: center;
   text-align: center;
-
-  @media (width >= 480px) {
-    gap: $spacing-400;
-  }
+  @include flex-column;
 }
 
 .title {
-  @include text-preset-1;
-
   margin: 0;
+  max-width: 814px;
+  @include text-preset-1;
 
   .name {
     background: linear-gradient(90deg, $orange-500 0%, $neutral-0 100%);
@@ -67,10 +58,7 @@
 
 .ticket-info {
   display: flex;
-  gap: $spacing-150;
-  @media (width >= 480px) {
-    gap: $spacing-250;
-  }
+  gap: clamp($spacing-150, 2.08vw, $spacing-250);
 
   & > svg {
     margin-top: $spacing-150;
@@ -80,11 +68,7 @@
 .event-summary {
   display: inline-grid;
   grid-template-columns: auto auto auto;
-  gap: $spacing-100;
-
-  @media (width >= 480px) {
-    gap: $spacing-150;
-  }
+  gap: clamp($spacing-100, 1.04vw, $spacing-150);
 }
 
 .event {
@@ -108,28 +92,20 @@
 
 .attendee {
   display: flex;
-  gap: $spacing-150;
+  gap: clamp($spacing-150, 1.56vw, $spacing-200);
   align-items: center;
 
   img {
-    width: 45px;
-    height: 45px;
+    width: clamp(45px, 10.42vw, 80px);
+    height: clamp(45px, 10.42vw, 80px);
+    object-fit: cover;
     border-radius: $radius-6;
-  }
-
-  @media (width >= 480px) {
-    gap: $spacing-200;
-
-    img {
-      width: 80px;
-      height: 80px;
-    }
   }
 }
 
 .user-info {
   display: inline-grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 16px auto;
   gap: $spacing-050;
   align-items: center;
 }
