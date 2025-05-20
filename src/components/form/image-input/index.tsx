@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import React, { useState } from 'react';
+import { useState, useRef } from 'react';
 import type { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 import UploadIcon from '@components/svg/upload-icon';
 import HintIcon from '@components/svg/hint-icon';
@@ -19,9 +19,14 @@ export default function ImageInput({
   onReset,
 }: ImageInputProps) {
   const [previewImg, setPreviewImg] = useState<string | null>(null);
-  // const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
-  // const { ref, ...rest } = register;
+  const { ref: rhfRef, ...rest } = register;
+
+  const setRefs = (el: HTMLInputElement | null) => {
+    rhfRef(el);
+    inputRef.current = el;
+  };
 
   function handleDelete(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
@@ -29,15 +34,14 @@ export default function ImageInput({
     onReset();
   }
 
-  // function handleChange() {
-  //   fileInputRef.current?.click();
-  // }
+  function handleChange(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    inputRef.current?.click();
+  }
 
   function handleFileLoad(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     console.log(e.target.files);
-    // e.target.value = '';
-
     if (file && file.size <= 500 * 1024) {
       setPreviewImg(URL.createObjectURL(file));
     }
@@ -49,8 +53,9 @@ export default function ImageInput({
         <button onClick={handleDelete} className={styles['image-controls']}>
           Remove image
         </button>
-        {/* onClick={handleChange} */}
-        <button className={styles['image-controls']}>Change image</button>
+        <button onClick={handleChange} className={styles['image-controls']}>
+          Change image
+        </button>
       </>
     );
   };
@@ -71,8 +76,8 @@ export default function ImageInput({
           key={inputKey}
           accept=".jpg, .jpeg, .png, image/jpeg, image/png"
           id="image"
-          // ref={fileInputRef}
-          {...register}
+          {...rest}
+          ref={setRefs}
           className={styles['file-input']}
           onChange={handleFileLoad}
         />
