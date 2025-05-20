@@ -20,8 +20,8 @@
 }
 
 #root {
+  gap: clamp(39px, 7.68vw, 69px);
   margin-top: clamp(32px, 5.21vw, 40px);
   margin-bottom: 30vh;
-  gap: clamp(39px, 7.68vw, 69px);
   @include flex-center-column;
 }

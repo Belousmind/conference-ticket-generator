@@ -35,8 +35,8 @@
 }
 
 .title {
-  margin: 0;
   max-width: 814px;
+  margin: 0;
   @include text-preset-1;
 
   .name {

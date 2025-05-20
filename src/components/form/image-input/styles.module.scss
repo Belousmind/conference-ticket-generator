@@ -29,6 +29,7 @@
     cursor: pointer;
   }
 }
+
 .dragging {
   background: rgb(255 255 255 / 20%);
 }
@@ -65,8 +66,6 @@
     color: $orange-500;
   }
 }
-
-
 
 .instruction-text {
   gap: $spacing-100;

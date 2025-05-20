@@ -1,3 +1,6 @@
+@use '@styles/variables' as *;
+@use '@styles/mixin' as *;
+
 .image-controls {
   padding: $spacing-050 $spacing-100;
   color: $neutral-300;

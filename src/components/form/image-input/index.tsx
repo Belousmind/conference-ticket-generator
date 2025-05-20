@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 import type { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 import { UploadIcon, HintIcon } from '@components/svg';
 import ImageControls from './image-controls';
+import useDragAndDrop from '@hooks/use-drag-and-drop';
 import clsx from 'clsx';
 
 type ImageInputProps = {
@@ -19,7 +20,9 @@ export default function ImageInput({
   onReset,
 }: ImageInputProps) {
   const [previewImg, setPreviewImg] = useState<string | null>(null);
-  const [isDragging, setIsDragging] = useState(false);
+  const { isDragging, handleDragOver, handleDragLeave, handleDrop } =
+    useDragAndDrop(handleFile);
+
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const { ref: rhfRef, ...rest } = register;
@@ -40,7 +43,7 @@ export default function ImageInput({
     inputRef.current?.click();
   }
 
-  const handleFile = (file: File) => {
+  function handleFile(file: File) {
     if (file && file.size <= 500 * 1024) {
       setPreviewImg(URL.createObjectURL(file));
       const dataTransfer = new DataTransfer();
@@ -49,7 +52,7 @@ export default function ImageInput({
         inputRef.current.files = dataTransfer.files;
       }
     }
-  };
+  }
 
   function handleFileLoad(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -57,24 +60,6 @@ export default function ImageInput({
       setPreviewImg(URL.createObjectURL(file));
     }
   }
-
-  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setIsDragging(true);
-  };
-
-  const handleDragLeave = () => {
-    setIsDragging(false);
-  };
-
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setIsDragging(false);
-    const file = e.dataTransfer.files?.[0];
-    if (file) {
-      handleFile(file);
-    }
-  };
 
   return (
     <label htmlFor="image" className={styles.label}>
