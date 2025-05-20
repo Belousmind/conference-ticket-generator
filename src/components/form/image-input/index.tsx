@@ -1,7 +1,8 @@
 import styles from './styles.module.scss';
 import { useState, useRef } from 'react';
 import type { FieldError, UseFormRegisterReturn } from 'react-hook-form';
-import {UploadIcon, HintIcon} from '@components/svg'
+import { UploadIcon, HintIcon } from '@components/svg';
+import ImageControls from './image-controls';
 import clsx from 'clsx';
 
 type ImageInputProps = {
@@ -18,6 +19,7 @@ export default function ImageInput({
   onReset,
 }: ImageInputProps) {
   const [previewImg, setPreviewImg] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const { ref: rhfRef, ...rest } = register;
@@ -38,36 +40,60 @@ export default function ImageInput({
     inputRef.current?.click();
   }
 
+  const handleFile = (file: File) => {
+    if (file && file.size <= 500 * 1024) {
+      setPreviewImg(URL.createObjectURL(file));
+      const dataTransfer = new DataTransfer();
+      dataTransfer.items.add(file);
+      if (inputRef.current) {
+        inputRef.current.files = dataTransfer.files;
+      }
+    }
+  };
+
   function handleFileLoad(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
-    console.log(e.target.files);
     if (file && file.size <= 500 * 1024) {
       setPreviewImg(URL.createObjectURL(file));
     }
   }
 
-  const Buttons = () => {
-    return (
-      <>
-        <button onClick={handleDelete} className={styles['image-controls']}>
-          Remove image
-        </button>
-        <button onClick={handleChange} className={styles['image-controls']}>
-          Change image
-        </button>
-      </>
-    );
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer.files?.[0];
+    if (file) {
+      handleFile(file);
+    }
   };
 
   return (
     <label htmlFor="image" className={styles.label}>
       Upload Avatar
-      <div className={styles.field}>
+      <div
+        className={clsx(styles.field, isDragging && styles.dragging)}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+      >
         <div className={styles['upload-icon-container']}>
           {previewImg ? <img src={previewImg} alt="" /> : <UploadIcon />}
         </div>
         <div className={styles['instruction-text']}>
-          {previewImg ? <Buttons /> : 'Drag and drop or click to upload'}
+          {previewImg ? (
+            <ImageControls onDelete={handleDelete} onChange={handleChange} />
+          ) : (
+            'Drag and drop or click to upload'
+          )}
         </div>
 
         <input
