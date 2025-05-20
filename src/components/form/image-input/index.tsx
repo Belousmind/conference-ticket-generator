@@ -1,8 +1,7 @@
 import styles from './styles.module.scss';
 import { useState, useRef } from 'react';
 import type { FieldError, UseFormRegisterReturn } from 'react-hook-form';
-import UploadIcon from '@components/svg/upload-icon';
-import HintIcon from '@components/svg/hint-icon';
+import {UploadIcon, HintIcon} from '@components/svg'
 import clsx from 'clsx';
 
 type ImageInputProps = {
