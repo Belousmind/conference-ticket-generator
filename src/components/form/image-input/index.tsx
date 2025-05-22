@@ -46,8 +46,10 @@ export default function ImageInput({
   function handleFile(file: File) {
     if (file && file.size <= 500 * 1024) {
       setPreviewImg(URL.createObjectURL(file));
+
       const dataTransfer = new DataTransfer();
       dataTransfer.items.add(file);
+
       if (inputRef.current) {
         inputRef.current.files = dataTransfer.files;
       }

@@ -9,6 +9,7 @@ const __dirname = dirname(__filePath);
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/conference-ticket-generator/',
   resolve: {
     alias: {
       '@components': path.resolve(__dirname, './src/components'),

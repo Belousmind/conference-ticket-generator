@@ -1,6 +1,5 @@
 import styles from './styles.module.scss';
 import { ConfLogo, GithubIcon } from '@components/svg';
-import TicketBackground from '../../public/pattern-ticket.svg';
 
 type TicketProps = {
   name: string;
@@ -25,7 +24,7 @@ export default function Ticket({ name, email, github, imgSrc }: TicketProps) {
       </div>
 
       <div className={styles.ticket}>
-        <img src={TicketBackground} alt="ticket" />
+        <img src="pattern-ticket.svg" alt="ticket" />
         <div className={styles['ticket-info']}>
           <ConfLogo />
           <div className={styles['event-summary']}>

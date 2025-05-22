@@ -8,6 +8,21 @@ export default function App() {
 
   return (
     <>
+      <img
+        src="pattern-squiggly-line-bottom.svg"
+        alt="pattern squiggly line bottom"
+        className="pattern bottom-wave"
+      />
+      <img
+        src="pattern-squiggly-line-top.svg"
+        alt="pattern squiggly line top"
+        className="pattern top-wave"
+      />
+      <img
+        src="pattern-lines.svg"
+        alt="pattern lines"
+        className="pattern background-lines"
+      />
       <Header />
       <main>
         {ticket ? (
