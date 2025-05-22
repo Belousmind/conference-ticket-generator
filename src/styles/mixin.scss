@@ -1,0 +1,132 @@
+@use './variables' as *;
+
+@mixin font-height-110 {
+  font-family: $font-family-primary;
+  line-height: $line-height-110;
+}
+
+@mixin font-height-120 {
+  font-family: $font-family-primary;
+  line-height: $line-height-120;
+}
+
+@mixin font-height-110-spacing-1 {
+  letter-spacing: $letter-spacing-minus-1;
+  @include font-height-110;
+}
+
+@mixin text-preset-1 {
+  font-size: clamp($font-size-30, 7.8vw, $font-size-60);
+  font-weight: 800;
+  color: $neutral-0;
+  text-align: center;
+  @include font-height-110-spacing-1;
+}
+
+@mixin text-preset-2 {
+  font-size: clamp($font-size-24, 5.21vw, $font-size-40);
+  font-weight: 700;
+  color: $neutral-0;
+  @include font-height-110-spacing-1;
+}
+
+@mixin text-preset-3 {
+  font-size: clamp($font-size-20, 3.91vw, $font-size-30);
+  font-weight: 500;
+  @include font-height-110-spacing-1;
+}
+
+@mixin text-preset-3-number {
+  font-size: clamp($font-size-20, 3.91vw, $font-size-30);
+  font-weight: 500;
+  @include font-height-110-spacing-1;
+}
+
+@mixin text-preset-4 {
+  font-size: clamp($font-size-20, 3.13vw, $font-size-24);
+  color: $neutral-300;
+  text-align: center;
+  letter-spacing: $letter-spacing-minus-0-5;
+  @include font-height-120;
+}
+
+@mixin text-preset-5-extra {
+  font-size: $font-size-20;
+  font-weight: 800;
+  letter-spacing: $letter-spacing-minus-0-3;
+  @include font-height-110;
+}
+
+@mixin text-preset-5 {
+  font-size: $font-size-20;
+  font-weight: 500;
+  letter-spacing: $letter-spacing-minus-0-5;
+  @include font-height-110;
+}
+
+@mixin text-preset-5-adaptive {
+  font-size: clamp($font-size-14, 2.34vw, $font-size-20);
+  font-weight: 500;
+  letter-spacing: $letter-spacing-minus-0-5;
+  @include font-height-110;
+}
+
+@mixin text-preset-6 {
+  font-size: $font-size-18;
+  font-weight: 400;
+  @include font-height-120;
+}
+
+@mixin text-preset-6-adaptive {
+  font-size: clamp($font-size-14, 2.34vw, $font-size-18);
+  font-weight: 400;
+  @include font-height-120;
+}
+
+@mixin text-preset-7 {
+  font-size: $font-size-12;
+  font-weight: 400;
+  letter-spacing: $letter-spacing-minus-0-2;
+  @include font-height-120;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-center-column {
+  flex-direction: column;
+  @include flex-center;
+}
+
+@mixin label {
+  gap: $spacing-150;
+  align-items: start;
+  color: $neutral-0;
+  cursor: pointer;
+  @include text-preset-5;
+  @include flex-column;
+}
+
+@mixin input-base-style {
+  width: 100%;
+  outline: none;
+  background: rgb(255 255 255 / 8%);
+  border: 1px solid $neutral-500;
+  border-radius: $radius-12;
+  backdrop-filter: blur(2.5px);
+}
+
+@mixin hint {
+  display: flex;
+  gap: $spacing-100;
+  align-items: center;
+  @include text-preset-7;
+}

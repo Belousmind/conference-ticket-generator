@@ -1,0 +1,29 @@
+@use '@styles/variables' as *;
+@use '@styles/mixin' as *;
+
+.image-controls {
+  padding: $spacing-050 $spacing-100;
+  color: $neutral-300;
+  cursor: pointer;
+  outline: none;
+  background: rgb(255 255 255 / 10%);
+  border: none;
+  border-radius: $radius-4;
+  transition: 0.4s ease-out;
+  @include text-preset-7;
+  @include flex-center;
+
+  &:first-child {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    border: 1px solid $neutral-700;
+  }
+  @media (hover: hover) {
+    &:hover {
+      color: $neutral-0;
+      background: rgb(255 255 255 / 20%);
+    }
+  }
+}

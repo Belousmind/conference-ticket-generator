@@ -1,0 +1,76 @@
+@use '@styles/variables' as *;
+@use '@styles/mixin' as *;
+
+.label {
+  @include label;
+}
+
+.field {
+  position: relative;
+  gap: $spacing-200;
+  padding: $spacing-150 $spacing-200;
+
+  @include flex-center-column;
+  @include input-base-style;
+
+  @media (hover: hover) {
+    &:hover {
+      background: rgb(255 255 255 / 20%);
+    }
+  }
+
+  &:focus-within {
+    box-shadow:
+      0 0 0 3px $neutral-900,
+      0 0 0 5px $neutral-500;
+  }
+
+  input {
+    cursor: pointer;
+  }
+}
+
+.dragging {
+  background: rgb(255 255 255 / 20%);
+}
+
+.file-input {
+  position: absolute;
+  opacity: 0;
+}
+
+.upload-icon-container {
+  width: 50px;
+  height: 50px;
+  margin-top: $spacing-050;
+  overflow: hidden;
+  background: rgb(255 255 255 / 10%);
+  border: 1px solid $neutral-700;
+  border-radius: $radius-12;
+  box-shadow: 0 2px 4px -2px $neutral-900;
+  backdrop-filter: blur(12px);
+  @include flex-center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.hint {
+  color: $neutral-300;
+  @include hint;
+
+  &.invalid {
+    color: $orange-500;
+  }
+}
+
+.instruction-text {
+  gap: $spacing-100;
+  margin-bottom: $spacing-050;
+  color: $neutral-300;
+  @include text-preset-6;
+  @include flex-center;
+}

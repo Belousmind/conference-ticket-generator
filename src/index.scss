@@ -1,0 +1,67 @@
+@use '@styles/variables.scss' as *;
+@use '@styles/mixin' as *;
+@import 'https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap';
+
+:root {
+  font-family: $font-family-primary;
+  color: $neutral-300;
+  color: white;
+  background: radial-gradient(
+    circle,
+    rgb(7 2 44 / 100%) 0%,
+    rgb(7 2 44 / 100%) 22%,
+    rgb(23 2 69 / 100%) 39%,
+    rgb(39 1 96 / 100%) 55%,
+    rgb(31 1 79 / 100%) 72%,
+    rgb(16 1 49 / 100%) 83%,
+    rgb(2 1 20 / 100%) 100%
+  );
+  background-color: $neutral-900;
+  background-position: bottom right 20%;
+  background-size: 200% 200%;
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#root {
+  position: relative;
+  gap: clamp(39px, 7.68vw, 69px);
+  padding-top: clamp(32px, 5.21vw, 40px);
+  padding-bottom: 30vh;
+  overflow: hidden;
+  @include flex-center-column;
+}
+
+main {
+  position: relative;
+  z-index: 10;
+}
+
+.pattern {
+  position: absolute;
+}
+
+.top-wave {
+  top: 7.6vh;
+  right: 0;
+  width: clamp(112px, 30.21vw, 446px);
+}
+
+.bottom-wave {
+  bottom: 0;
+  left: 0;
+  width: clamp(301px, 51.56vw, 825px);
+}
+
+.background-lines {
+  top: 0;
+}
