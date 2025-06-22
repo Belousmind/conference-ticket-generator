@@ -8,16 +8,16 @@
   color: $neutral-300;
   color: white;
   background:
-    radial-gradient(
-      circle,
-      rgb(7 2 44 / 100%) 0%,
-      rgb(7 2 44 / 100%) 22%,
-      rgb(23 2 69 / 100%) 39%,
-      rgb(39 1 96 / 100%) 55%,
-      rgb(31 1 79 / 100%) 72%,
-      rgb(16 1 49 / 100%) 83%,
-      rgb(2 1 20 / 100%) 100%
-    ),
+    // radial-gradient(
+    //   circle,
+    //   rgb(7 2 44 / 100%) 0%,
+    //   rgb(7 2 44 / 100%) 22%,
+    //   rgb(23 2 69 / 100%) 39%,
+    //   rgb(39 1 96 / 100%) 55%,
+    //   rgb(31 1 79 / 100%) 72%,
+    //   rgb(16 1 49 / 100%) 83%,
+    //   rgb(2 1 20 / 100%) 100%
+    // ),
     $neutral-900;
   background-position: bottom right 20%;
   background-size: 200% 200%;
