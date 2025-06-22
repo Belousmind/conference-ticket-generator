@@ -5,10 +5,10 @@ type TicketProps = {
   name: string;
   email: string;
   github: string;
-  imgSrc: string;
+  imageUrl: string;
 };
 
-export default function Ticket({ name, email, github, imgSrc }: TicketProps) {
+export default function Ticket({ name, email, github, imageUrl }: TicketProps) {
   return (
     <section className={styles['ticket-section']}>
       <div className={styles.confirmation}>
@@ -35,7 +35,7 @@ export default function Ticket({ name, email, github, imgSrc }: TicketProps) {
           </div>
         </div>
         <div className={styles.attendee}>
-          <img src={imgSrc} alt={name} />
+          <img src={imageUrl} alt={name} />
           <div className={styles['user-info']}>
             <span className={styles.fullname}>{name}</span>
             <GithubIcon />
