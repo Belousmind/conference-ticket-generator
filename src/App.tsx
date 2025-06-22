@@ -24,18 +24,7 @@ export default function App() {
         className="pattern background-lines"
       />
       <Header />
-      <main>
-        {ticket ? (
-          <Ticket
-            name={ticket.name}
-            email={ticket.email}
-            github={ticket.github}
-            imgSrc={ticket.imageUrl}
-          />
-        ) : (
-          <FormPage />
-        )}
-      </main>
+      <main>{ticket ? <Ticket {...ticket} /> : <FormPage />}</main>
     </>
   );
 }
