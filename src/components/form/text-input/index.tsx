@@ -9,6 +9,7 @@ type TextInputProps = {
   type: string;
   error?: FieldError;
   register: UseFormRegisterReturn;
+
 };
 
 export default function TextInput({
@@ -21,7 +22,8 @@ export default function TextInput({
 }: TextInputProps) {
   return (
     <label htmlFor={id} className={styles.label}>
-      {label}
+      <span>{label}</span>
+
       <input
         type={type}
         id={id}
