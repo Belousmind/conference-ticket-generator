@@ -12,7 +12,7 @@ export default function Header() {
 
   useGSAP(() => {
     const spitText = new SplitText(textRef.current, { type: 'chars' });
-    let chars = spitText.chars;
+    const chars = spitText.chars;
     gsap.fromTo(
       chars,
       {
@@ -33,11 +33,9 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <ConfLogo />
-      {/* <div className={styles.container}> */}
-        <span className={styles.text} ref={textRef}>
-          Сoding Сonf
-        </span>
-      {/* </div> */}
+      <span className={styles.text} ref={textRef}>
+        Сoding Сonf
+      </span>
     </header>
   );
 }
