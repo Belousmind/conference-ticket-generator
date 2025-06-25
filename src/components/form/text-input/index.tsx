@@ -9,7 +9,6 @@ type TextInputProps = {
   type: string;
   error?: FieldError;
   register: UseFormRegisterReturn;
-
 };
 
 export default function TextInput({

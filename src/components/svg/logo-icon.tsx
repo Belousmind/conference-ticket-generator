@@ -6,19 +6,17 @@ import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(MorphSVGPlugin);
 
 export default function ConfLogo() {
-  const circlesRef = useRef<(SVGPathElement | null)[]>([]);
-  const pathsRef = useRef<(SVGPathElement | null)[]>([]);
-
-  const setCircleRef = (index: number) => (el: SVGPathElement | null) => {
-    circlesRef.current[index] = el;
-  };
+  const svgRef = useRef<SVGSVGElement | null>(null);
 
   useGSAP(() => {
-    if (circlesRef.current.length === 0 || pathsRef.current.length === 0)
-      return;
+    if (!svgRef.current) return;
 
-    // Анимация появления
-    gsap.from(circlesRef.current, {
+    const circles = svgRef.current.querySelectorAll<SVGPathElement>('.circle');
+    const targets = svgRef.current.querySelectorAll<SVGPathElement>('.target');
+
+    if (circles.length === 0 || targets.length === 0) return;
+
+    gsap.from(circles, {
       scale: 0,
       opacity: 0,
       transformOrigin: 'center',
@@ -26,11 +24,10 @@ export default function ConfLogo() {
       duration: 0.3,
     });
 
-    // Анимация морфинга
-    circlesRef.current.forEach((circle, i) => {
+    circles.forEach((circle, i) => {
       gsap.to(circle, {
         morphSVG: {
-          shape: pathsRef.current[i],
+          shape: targets[i],
         },
         ease: 'power4.out',
         duration: 1.5,
@@ -39,43 +36,20 @@ export default function ConfLogo() {
   });
 
   return (
-    <svg width="29" height="29" viewBox="0 0 29 29" fill="none">
-      {/* Круги */}
-      <path
-        ref={setCircleRef(0)}
-        d="M7,7 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0"
-        fill="#F57463"
-      />
-      <path
-        ref={setCircleRef(1)}
-        d="M14,14 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0"
-        fill="#F57463"
-      />
-      <path
-        ref={setCircleRef(2)}
-        d="M21,7 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0"
-        fill="#F57463"
-      />
+    <svg
+      ref={svgRef}
+      width="29"
+      height="29"
+      viewBox="0 0 29 29"
+      fill="none"
+    >
+      <path className="circle" d="M7,7 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0" fill="#F57463" />
+      <path className="circle" d="M14,14 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0" fill="#F57463" />
+      <path className="circle" d="M21,7 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0" fill="#F57463" />
 
-      {/* Целевые формы */}
-      <path
-        ref={(el) => el && (pathsRef.current[0] = el)}
-        d="M0 26.1C4.80493 26.1 8.70006 22.2048 8.70006 17.4C8.70006 12.5951 4.80493 8.7 0 8.7V14.79C1.44147 14.79 2.61001 15.9585 2.61001 17.4C2.61001 18.8415 1.44147 20.01 0 20.01V26.1Z"
-        fill="#F57463"
-        style={{ opacity: 0 }}
-      />
-      <path
-        ref={(el) => el && (pathsRef.current[1] = el)}
-        d="M29.0001 11.6001C27.5134 11.1291 25.9302 10.875 24.2875 10.875C15.6787 10.875 8.69995 17.8538 8.69995 26.4625C8.69995 27.3266 8.77027 28.1742 8.90545 29H18.5905C18.2448 28.2249 18.0526 27.3662 18.0526 26.4625C18.0526 23.019 20.844 20.2275 24.2875 20.2275C26.1696 20.2275 27.8569 21.0614 29.0001 22.3798V11.6001Z"
-        fill="#F57463"
-        style={{ opacity: 0 }}
-      />
-      <path
-        ref={(el) => el && (pathsRef.current[2] = el)}
-        d="M1.5293 0C2.25059 6.52492 7.78252 11.6 14.4998 11.6C21.2169 11.6 26.7489 6.52492 27.4702 0H18.1374C17.5613 1.44436 16.1497 2.46499 14.4998 2.46499C12.8498 2.46499 11.4383 1.44436 10.862 0H1.5293Z"
-        fill="#F57463"
-        style={{ opacity: 0 }}
-      />
+      <path className="target" d="M0 26.1C4.8 26.1 8.7 22.2 8.7 17.4C8.7 12.6 4.8 8.7 0 8.7V14.79C1.44 14.79 2.61 15.96 2.61 17.4C2.61 18.84 1.44 20.01 0 20.01V26.1Z" fill="#F57463" style={{ opacity: 0 }} />
+      <path className="target" d="M29 11.6C27.5 11.13 25.93 10.88 24.29 10.88C15.68 10.88 8.7 17.85 8.7 26.46C8.7 27.33 8.77 28.17 8.91 29H18.59C18.24 28.22 18.05 27.37 18.05 26.46C18.05 23.02 20.84 20.23 24.29 20.23C26.17 20.23 27.86 21.06 29 22.38V11.6Z" fill="#F57463" style={{ opacity: 0 }} />
+      <path className="target" d="M1.53 0C2.25 6.52 7.78 11.6 14.5 11.6C21.22 11.6 26.75 6.52 27.47 0H18.14C17.56 1.44 16.15 2.46 14.5 2.46C12.85 2.46 11.44 1.44 10.86 0H1.53Z" fill="#F57463" style={{ opacity: 0 }} />
     </svg>
   );
 }
